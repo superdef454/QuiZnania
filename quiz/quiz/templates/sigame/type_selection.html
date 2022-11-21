@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{section}}{% endblock title %}
+
+{% block content %}
+<div class="rounds-container">
+    <div class="rounds-container-button column">
+{% if types %}
+<h1 class="text__third__screen">Выбор игры</h1>
+{% comment %} добавить стиль {% endcomment %}
+    {% for i in types %}
+    <a href="{% url 'round_selection' section i %}" class="round-button">
+        {{i}}
+    </a>
+    {% endfor %}
+{% else %}
+<h1 class="text__third__screen">Раздел не заполнен!</h1>
+{% comment %} добавить стиль {% endcomment %}
+{% endif %}
+<a href="{% url 'sigame' %}" class="round-button">
+    Вернуться назад
+</a>
+</div>
+</div>
+{% endblock content %}

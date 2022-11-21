@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="start-game__container">
+        <a href="{% url 'sigame' %}" class="fs_start_game">
+            Начать викторину
+        </a>
+    </div>
+    <div class="faq">
+        <a target="_blank" href="{% static "Справка_по_использованию_программы.pdf" %}">
+            ?
+        </a>
+    </div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if sections %}
+<div class="rounds-container">
+    <h1 class="text__third__screen">Выбор раздела</h1>
+    <div class="rounds-container-button">
+{% for a in sections %}
+        <a href="game/{{a.title}}/" class="round-button">
+            {{a.title}}
+        </a>
+{% endfor %}
+    </div>
+</div>
+{% else %}
+<div class="rounds-container">
+    <h1 class="text__third__screen">Викторина не заполнена</h1>
+</div>
+{% comment %} Добавить стиль {% endcomment %}
+{% endif %}
+{% endblock content %}
