@@ -8,10 +8,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 
 # path = os получить путь до драйвера для разных компов но лень, поэтому:
-path = "C:/Users/Пользователь/Desktop/работа/git/QuiZnania/featuers/requirements.txt"
+path = "C:/Users/Пользователь/Desktop/работа/git/QuiZnania/featuers/chromedriver.exe"
 
 #Откроем главную страницу. Передадим в качестве аргумента адрес страницы.
-@step('Запущен сайт "{url}"')
+@given('Запущен сайт "{url}"')
 def step(context, url):
     chrome_options = Options()
     chrome_options.add_argument("--disable-extensions")
@@ -19,27 +19,18 @@ def step(context, url):
     context.browser.maximize_window()
     context.browser.get(url)
 
-@step("Пользователь выбирает первый раздел, первую тему, первый раунд и прокликивает до конца")
-def step(context):
-    pass
+@when('Пользователь нажимает на кнопку с названием "{name}"')
+def step(context, name):
+    element = WebDriverWait(context.browser, 120).until(
+        # Как найти по тексту хз
+        EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[1]/a"))
+    )
+    element.click()
 
-@step("Пользователь выбирает первый раздел, первую тему, первый раунд и прокликивает до конца")
+@then("Открывается страница с выбром раздела")
 def step(context):
+    element = WebDriverWait(context.browser, 120).until(
+        EC.presence_of_element_located((By.CLASS_NAME, 'text__third__screen'))
+    )
+    assert element
     context.browser.quit()
-
-# # найдём и нажмём на кнопку
-# @When("push button with div '{text}'")
-# def step(context, text):
-#     element = WebDriverWait(context.browser, 120).until(
-#         EC.element_to_be_clickable((By.CLASS_NAME, text))
-#     )
-#     element.click()
-
-# #Проверим, что мы на странице с результатами поиска, есть некоторый искомый див
-# @then("page include div '{text}'")
-# def step(context, text):
-#     element = WebDriverWait(context.browser, 120).until(
-#         EC.presence_of_element_located((By.CLASS_NAME, text))
-#     )
-#     # assert element
-#     context.browser.quit()
