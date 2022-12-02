@@ -8,7 +8,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 
 # path = os получить путь до драйвера для разных компов но лень, поэтому:
-path = "C:/Users/Пользователь/Desktop/работа/git/QuiZnania/featuers/chromedriver.exe"
+# path = "C:/Users/Пользователь/Desktop/работа/git/QuiZnania/featuers/chromedriver.exe"
+path = "C:/Users/user/Documents/учёба/git/QuiZnania/featuers/chromedriver.exe"
+
 
 #Откроем главную страницу. Передадим в качестве аргумента адрес страницы.
 @given('Запущен сайт "{url}"')
