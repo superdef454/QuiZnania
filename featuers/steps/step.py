@@ -56,11 +56,9 @@ def step(context, url, object):
 def step(context, url, checkbox, submit):
     context.browser.get(url)
     element = WebDriverWait(context.browser, 10).until(
-        # Как найти по тексту хз
         EC.element_to_be_clickable((By.XPATH, checkbox))
     ).click()
     element = WebDriverWait(context.browser, 10).until(
-        # Как найти по тексту хз
         EC.element_to_be_clickable((By.XPATH, submit))
     ).click()
 
